@@ -5,6 +5,7 @@ fn main() {
     // Tell cargo to tell rustc to link the system aqbanking
     // shared library.
     println!("cargo:rustc-link-lib=aqbanking");
+    println!("cargo:rustc-link-lib=gwenhywfar");
 
     // Tell cargo to invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
@@ -22,6 +23,7 @@ fn main() {
         // Add clang Include paths
         .clang_arg("-I/usr/include/aqbanking6")
         .clang_arg("-I/usr/include/gwenhywfar5")
+        //.clang_arg("-l/usr/lib/gwenhywfar")
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.
